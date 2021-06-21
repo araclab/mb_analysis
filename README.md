@@ -1,6 +1,6 @@
 # mb_analysis
 
-**DADA2 pipeline requirements:**
+**Inhouse DADA2 pipeline requirements:**
 1.	SLURM
 2.	Trimmomatic 0.38 or 0.39
 3.	Cutadapt version 2.4
