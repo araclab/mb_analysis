@@ -19,7 +19,6 @@ Note!!: Samplename (the first part of the file name, for example: B123-GWU-DNA) 
 
 Please update the location of the pipeline and all dependency scripts in dada2_pipeline_vP_v10.sh : 
 **scripts**='/GWSPH/groups/liu_price_lab/pegasus_bin/Tools/dada2_pipeline_scripts'
-**qiime**='/GWSPH/groups/liu_price_lab/pegasus_bin/Tools/qiime1/bin'
 **rdp**='/GWSPH/groups/liu_price_lab/pegasus_bin/Tools/RDP_classifiers/rdp_classifier_2.12/dist'
 **v6species**='/GWSPH/groups/liu_price_lab/pegasus_bin/Scripts/MiSeq16S-master/V6_species'
 **database**='/GWSPH/groups/liu_price_lab/pegasus_bin/Tools/dada2_pipeline_databases'
