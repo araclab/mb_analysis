@@ -18,11 +18,8 @@ Note!!: Samplename (the first part of the file name, for example: B123-GWU-DNA) 
 
 Please update the location of the pipeline and all dependency scripts in dada2_pipeline_vP_v10.sh : 
 **scripts**='YOUR_PATH/dada2_pipeline_scripts'
-
 **rdp**='YOUR_PATH/rdp_classifier_2.12/dist'
-
 **v6species**='YOUR_PATH/V6_species'
-
 **database**='YOUR_PATH/dada2_pipeline_databases'
 
 
