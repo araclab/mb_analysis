@@ -17,10 +17,10 @@
 Note!!: Samplename (the first part of the file name, for example: B123-GWU-DNA) should avoid containing underscores (this applies to DADA2 and all Illumina systems). Use of dashes is recommended.
 
 Please update the location of the pipeline and all dependency scripts in dada2_pipeline_vP_v10.sh : 
-**scripts**='/GWSPH/groups/liu_price_lab/pegasus_bin/Tools/dada2_pipeline_scripts'
-**rdp**='/GWSPH/groups/liu_price_lab/pegasus_bin/Tools/RDP_classifiers/rdp_classifier_2.12/dist'
-**v6species**='/GWSPH/groups/liu_price_lab/pegasus_bin/Scripts/MiSeq16S-master/V6_species'
-**database**='/GWSPH/groups/liu_price_lab/pegasus_bin/Tools/dada2_pipeline_databases'
+**scripts**='YOUR_PATH/dada2_pipeline_scripts'
+**rdp**='YOUR_PATH/rdp_classifier_2.12/dist'
+**v6species**='YOUR_PATH/V6_species'
+**database**='YOUR_PATH/dada2_pipeline_databases'
 
 
 General pipeline system call for SLURM environment (use qsub instead of sbatch for Sun Grid Engine)
