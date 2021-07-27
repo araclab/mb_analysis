@@ -10,8 +10,7 @@
 7.	BIOM version 2.1.6
 8.	QIIME 1.9.1
 9.	RDP classifier 2.12
-10.	Anaconda/pricelab_5.2.0
-11.	Anaconda /c1/apps/anaconda/pricelab_5.2.0/anaconda3/envs/dada2
+10.	dada2
 12.	Perl 
 
 
