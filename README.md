@@ -1,43 +1,47 @@
-# EHS Git Check
 # mb_analysis
+Short descriptive blurb and cite paper here or just cite paper here to keep it simple?  
 
-**Inhouse DADA2 pipeline requirements:**
-1.	SLURM
-2.	Trimmomatic 0.38 or 0.39
-3.	Cutadapt version 2.4
-4.	GNU parallel 
-5.	R > 3.5.0 and Bioconductor version > 3.8 
-6.	DADA2 version 1.10
-7.	BIOM version 2.1.6
-8.	QIIME 1.9.1
-9.	RDP classifier 2.12
-10.	dada2
-12.	Perl 
 
+## Inhouse DADA2 pipeline requirements:
+| Tool           | Version   		   |
+| -------------- | ----------------------- |
+| SLURM          | v23.02.4  		   | 
+| Trimmomatic    | v0.39     		   |
+| Cutadapt       | v2.10     		   |
+| GNU parallel   | v20201122 		   |
+| R	         | >= v3.5.0    	   |
+| R-Bioconductor | >= v3.12   		   |
+| DADA2 	 | v1.16  		   |
+| BIOM 		 | v2.1.10 		   |
+| QIIME 	 | v1.9.1 		   |
+| RDP-Classifier | v2.12 		   |
+| perl 		 | >= v5.26.2 		   |
+| java 		 | build 10.0.2 2018-07-17 |
 
 Note!!: Samplename (the first part of the file name, for example: B123-GWU-DNA) should avoid containing underscores (this applies to DADA2 and all Illumina systems). Use of dashes is recommended.
 
-Please update the location of the pipeline and all dependency scripts in dada2_pipeline_vP_v10.sh :  
-  **scripts** = 'YOUR_PATH/dada2_pipeline_scripts'  
-  **rdp** = 'YOUR_PATH/rdp_classifier_2.12/dist'  
-  **v6species** = 'YOUR_PATH/V6_species'  
-  **database** = 'YOUR_PATH/dada2_pipeline_databases'  
-
+Please add your conda environment locations, along with updating the path location of the pipeline files and all dependency scripts in **dada2_pipeline_vP_v11_cleaned.sh**:  
+Will also need to modify the called conda enviroments in the shell script if created under a different name. (dada2 and qiime1)  
+&nbsp;&nbsp;&nbsp;&nbsp; **scripts** = 'YOUR_PATH/dada2_pipeline_scripts'  
+&nbsp;&nbsp;&nbsp;&nbsp; **rdp** = 'YOUR_PATH/rdp_classifier_2.12/dist'  
+&nbsp;&nbsp;&nbsp;&nbsp; **v6species** = 'YOUR_PATH/V6_species'  
+&nbsp;&nbsp;&nbsp;&nbsp; **database** = 'YOUR_PATH/dada2_pipeline_databases'  
 
 General pipeline system call for SLURM environment (use qsub instead of sbatch for Sun Grid Engine)
 
+## Script Usage
 USAGE: options available
 
-sbatch dada2_pipeline_vP_v10.sh -i raw_reads -r runX
+sbatch dada2_pipeline_vP_v11_cleaned.sh -i raw_reads -r runX -t 2 -dt rdp_train_set_16.fa.gz -ds rdp_species_assignment_16.fa.gz -p amplicon_primers_fadrosh.fasta
                 
                 mandatory options:
 
                                 -i or --input : provide the name of your input folder (containing FASTQ files)
                                 
                 optional options:
-                                -p or --primer : path to fasta file with primer sequences (default:/GWSPH/groups/liu_price_lab/pegasus_bin/Tools/dada2_pipeline_databases/amplicon_primers_bactquant.fasta) 
+                                -p or --primer : path to fasta file with primer sequences (default:YOUR_PATH/dada2_pipeline_databases/amplicon_primers_bactquant.fasta) 
                                 -r or --run : provide the name of your sequencing run e.g.:run17
-                                -t or --threads : give the number of threads to use (default is 2)
+                                -t or --threads : give the number of threads to use (default is 16)
                                 -dt or --taxonomydb : give the name of your taxonomy database
                                 -ds or --speciesdb : give the name of your species database
           Help options:
@@ -45,20 +49,24 @@ sbatch dada2_pipeline_vP_v10.sh -i raw_reads -r runX
 
                 e.g. :
 
-                                sbatch dada2_pipeline_vP_v10.sh -i raw_reads -r run17 -t 2 -dt rdp_train_set_16.fa.gz -ds rdp_species_assignment_16.fa.gz
+                                sbatch dada2_pipeline_vP_v11_cleaned.sh -i raw_reads -r run17 -t 2 -dt rdp_train_set_16.fa.gz -ds rdp_species_assignment_16.fa.gz -p amplicon_primers_fadrosh.fasta
                                 raw_reads is the name of the input folder
                                 run17 is the run name
                                 2 is the total number of threads
                                 rdp_train_set_16.fa.gz is the name of your taxonomy database
                                 rdp_species_assignment_16.fa.gz is the name of your species database
+                                amplicon_primers_fadrosh.fasta is the name of your fadrosh amplicon primer sequences fasta file
 
 Note!!: When migrating this pipeline to environments with a Sun Grid Engine scheduler, make sure to alter the first five lines of the workflow script to make it compatible!!
+
+
+## Script Processing
 
 **Data transfer to the cluster and check MD5 codes (perform manually):**
 
 Copy files to a common location (when you need to transfer compressed FASTQ files (.gz) from the MiSeq to your computer system)
 
-cp **/*.gz raw_reads_directory
+	cp **/*.gz raw_reads_directory
 
   Example of the demultiplexed file naming format:
   B123-GWU-DNA_325_L001_R1_001.fastq.gz :
