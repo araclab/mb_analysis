@@ -322,7 +322,7 @@ setwd(work_dir)
 
 # Load in the accepted_16S_species text file (Currently textfile needs to be in the working directory)
 accepted_16S_Species <- c("Sample_ID", "contaminated", "Total_Reads") # Includes these columns when filtering for selected species list.
-accepted_16S_Species <- append(accepted_16S_Species, readLines("SOP_16S_Sequencing_QC_16SAcceptedSpecies.txt"))
+accepted_16S_Species <- append(accepted_16S_Species, readLines("16S_Sequencing_QC_16SAcceptedSpecies.txt"))
 
 # Raw data
 rawGenus_data <- read.delim(rawGenus_filename, sep = "\t", skip = 1, header = TRUE)
