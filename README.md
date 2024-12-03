@@ -1,3 +1,5 @@
+![Banner](./ARAC_BannerTest.png)
+
 # mb_analysis
 Code repository used to process 16S sequencing data used in: Composition and Dynamics of the Adult Nasal Microbiome.
 
